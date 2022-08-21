@@ -17,7 +17,6 @@ export default function ExerciceList() {
   }, []);
 
   const getExercises = () => {
-    console.log("api call");
     axios
       .get("https://mocki.io/v1/2f2ca3e8-5d39-499d-983e-266957dbbea3")
       .then((response) => response.data)
