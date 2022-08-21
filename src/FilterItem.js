@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function FilterItem(props) {
   return (
     <li>
@@ -10,4 +12,10 @@ function FilterItem(props) {
     </li>
   );
 }
+
+FilterItem.propTypes = {
+  muscularGroup: PropTypes.string.isRequired,
+  filterMethod: PropTypes.func.isRequired,
+};
+
 export default FilterItem;
