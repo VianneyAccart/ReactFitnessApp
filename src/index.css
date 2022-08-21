@@ -1,1 +1,17 @@
+.dropdown-item {
+    cursor: pointer;
+}
 
+.current-filter {
+    padding: 4px 7px;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.bi {
+    cursor: pointer;
+}
+
+.bi:hover {
+    color: white;
+}

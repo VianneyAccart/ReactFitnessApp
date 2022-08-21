@@ -1,47 +1,110 @@
 import { Component } from "react";
 import exercises from "./data.mock";
 import Exercise from "./Exercise";
+import "./index.css";
 
 class ExerciceList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      exercises: exercises,
+      selectedGroup: "",
+    };
+    this.initialExercises = exercises;
+  }
+
+  showExercisesFromMuscularGroup = (muscularGroup) => {
+    let filteredExercises = exercises.filter(
+      (exercise) => exercise.muscularGroup === muscularGroup
+    );
+    this.setState({
+      exercises: filteredExercises,
+      selectedGroup: muscularGroup,
+    });
+  };
+
+  displayAllExercises = () => {
+    this.setState({ exercises: this.initialExercises, selectedGroup: "" });
+  };
+
   render() {
-    function getMuscularGroups() {
-      let muscularGroups = [];
-      exercises.forEach((exercise) => {
-        if (!muscularGroups.includes(exercise.muscularGroup))
-          muscularGroups.push(exercise.muscularGroup);
-      });
-      return muscularGroups;
-    }
-
-    const muscularGroups = getMuscularGroups();
-
     return (
-      <div>
-        <h1 className="text-center">Exercises list</h1>
-        <hr />
-        <div className="d-flex mb-3">
-          <button className="me-2">Tous</button>
-          <button className="me-2">Pectoraux</button>
-          <button className="me-2">Jambes</button>
-          <button className="me-2">Dos</button>
-          <button className="me-2">Bras</button>
+      <div className="container">
+        <div className="d-flex justify-content-between my-3">
+          <h1>Liste des exercices</h1>
+          <div className="dropdown">
+            <button
+              className="btn btn-outline-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Filtrer
+            </button>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <p className="dropdown-item" onClick={this.displayAllExercises}>
+                  Tous
+                </p>
+              </li>
+              <li>
+                <p
+                  className="dropdown-item"
+                  onClick={() =>
+                    this.showExercisesFromMuscularGroup("Pectoraux")
+                  }
+                >
+                  Pectoraux
+                </p>
+              </li>
+              <li>
+                <p
+                  className="dropdown-item"
+                  onClick={() => this.showExercisesFromMuscularGroup("Jambes")}
+                >
+                  Jambes
+                </p>
+              </li>
+              <li>
+                <p
+                  className="dropdown-item"
+                  onClick={() => this.showExercisesFromMuscularGroup("Dos")}
+                >
+                  Dos
+                </p>
+              </li>
+              <li>
+                <p
+                  className="dropdown-item"
+                  onClick={() => this.showExercisesFromMuscularGroup("Bras")}
+                >
+                  Bras
+                </p>
+              </li>
+            </ul>
+          </div>
         </div>
-        {muscularGroups.map((muscularGroup, index) => {
-          return (
-            <div key={index}>
-              <h2>{muscularGroup}</h2>
-              <ul>
-                {exercises
-                  .filter(
-                    (exercise) => exercise.muscularGroup === muscularGroup
-                  )
-                  .map((exercise, index) => {
-                    return <Exercise key={index} exercise={exercise} />;
-                  })}
-              </ul>
-            </div>
-          );
-        })}
+
+        {this.state.selectedGroup ? (
+          <p>
+            Filtre actif :{" "}
+            <span className="current-filter">
+              {this.state.selectedGroup}
+              <i
+                onClick={this.displayAllExercises}
+                className="bi bi-x-circle ms-2"
+              ></i>
+            </span>
+          </p>
+        ) : (
+          ""
+        )}
+        <ul className="list-group list-group-flush">
+          {this.state.exercises.map((exercise, index) => {
+            return <Exercise key={index} exercise={exercise} />;
+          })}
+        </ul>
       </div>
     );
   }
