@@ -1,24 +1,38 @@
 import { Component } from "react";
 import ActiveFilter from "../Filtering/ActiveFilter";
-import exercises from "../data.mock";
 import Exercise from "./Exercise";
 import FilterDropdown from "../Filtering/FilterDropdown";
 import "../index.css";
+import axios from "axios";
 import SearchBar from "../Filtering/SearchBar";
 
 class ExerciceList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      exercises: exercises,
+      exercises: [],
       selectedGroup: "",
       searchValue: "",
     };
-    this.initialExercises = exercises;
+    this.initialExercises = [];
   }
 
+  componentDidMount() {
+    this.getExercises();
+  }
+
+  getExercises = () => {
+    axios
+      .get("https://mocki.io/v1/2f2ca3e8-5d39-499d-983e-266957dbbea3")
+      .then((response) => response.data)
+      .then((data) => {
+        this.setState({ exercises: data });
+        this.initialExercises = data;
+      });
+  };
+
   showExercisesFilteredByMuscularGroup = (muscularGroup) => {
-    let filteredExercises = exercises.filter(
+    let filteredExercises = this.state.exercises.filter(
       (exercise) => exercise.muscularGroup === muscularGroup
     );
     this.setState({

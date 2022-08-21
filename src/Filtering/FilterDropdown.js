@@ -41,8 +41,8 @@ function FilterDropdown(props) {
 }
 
 FilterDropdown.propTypes = {
-  muscularGroup: PropTypes.string.isRequired,
-  filterMethod: PropTypes.func.isRequired,
+  displayAllExercises: PropTypes.func.isRequired,
+  showExercisesFilteredByMuscularGroup: PropTypes.func.isRequired,
 };
 
 export default FilterDropdown;
