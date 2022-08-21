@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function ActiveFilter(props) {
+export default function ActiveFilter(props) {
   return (
     <p>
       Filtre actif :{" "}
@@ -19,5 +19,3 @@ ActiveFilter.propTypes = {
   selectedGroup: PropTypes.string.isRequired,
   displayAllExercises: PropTypes.func.isRequired,
 };
-
-export default ActiveFilter;

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function FilterItem(props) {
+export default function FilterItem(props) {
   return (
     <li>
       <p
@@ -17,5 +17,3 @@ FilterItem.propTypes = {
   muscularGroup: PropTypes.string.isRequired,
   filterMethod: PropTypes.func.isRequired,
 };
-
-export default FilterItem;

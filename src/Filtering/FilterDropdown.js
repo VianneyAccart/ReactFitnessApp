@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import FilterItem from "./FilterItem";
 
-function FilterDropdown(props) {
+export default function FilterDropdown(props) {
   return (
     <div className="dropdown">
       <button
@@ -44,5 +44,3 @@ FilterDropdown.propTypes = {
   displayAllExercises: PropTypes.func.isRequired,
   showExercisesFilteredByMuscularGroup: PropTypes.func.isRequired,
 };
-
-export default FilterDropdown;

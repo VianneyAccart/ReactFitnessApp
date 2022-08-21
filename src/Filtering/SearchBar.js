@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function SearchBar(props) {
+export default function SearchBar(props) {
   const { searchValue, searchValueChange } = props;
   return (
     <div className="input-group mb-3">
@@ -25,5 +25,3 @@ function SearchBar(props) {
 SearchBar.propTypes = {
   searchValueChange: PropTypes.func.isRequired,
 };
-
-export default SearchBar;
