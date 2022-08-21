@@ -1,6 +1,7 @@
 import { Component } from "react";
 import exercises from "./data.mock";
 import Exercise from "./Exercise";
+import FilterItem from "./FilterItem";
 import "./index.css";
 
 class ExerciceList extends Component {
@@ -48,40 +49,22 @@ class ExerciceList extends Component {
                   Tous
                 </p>
               </li>
-              <li>
-                <p
-                  className="dropdown-item"
-                  onClick={() =>
-                    this.showExercisesFromMuscularGroup("Pectoraux")
-                  }
-                >
-                  Pectoraux
-                </p>
-              </li>
-              <li>
-                <p
-                  className="dropdown-item"
-                  onClick={() => this.showExercisesFromMuscularGroup("Jambes")}
-                >
-                  Jambes
-                </p>
-              </li>
-              <li>
-                <p
-                  className="dropdown-item"
-                  onClick={() => this.showExercisesFromMuscularGroup("Dos")}
-                >
-                  Dos
-                </p>
-              </li>
-              <li>
-                <p
-                  className="dropdown-item"
-                  onClick={() => this.showExercisesFromMuscularGroup("Bras")}
-                >
-                  Bras
-                </p>
-              </li>
+              <FilterItem
+                muscularGroup="Pectoraux"
+                filterMethod={this.showExercisesFromMuscularGroup}
+              />
+              <FilterItem
+                muscularGroup="Dos"
+                filterMethod={this.showExercisesFromMuscularGroup}
+              />
+              <FilterItem
+                muscularGroup="Bras"
+                filterMethod={this.showExercisesFromMuscularGroup}
+              />
+              <FilterItem
+                muscularGroup="Jambes"
+                filterMethod={this.showExercisesFromMuscularGroup}
+              />
             </ul>
           </div>
         </div>
