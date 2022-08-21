@@ -21,19 +21,19 @@ function FilterDropdown(props) {
         </li>
         <FilterItem
           muscularGroup="Pectoraux"
-          filterMethod={props.showExercisesFromMuscularGroup}
+          filterMethod={props.showExercisesFilteredByMuscularGroup}
         />
         <FilterItem
           muscularGroup="Dos"
-          filterMethod={props.showExercisesFromMuscularGroup}
+          filterMethod={props.showExercisesFilteredByMuscularGroup}
         />
         <FilterItem
           muscularGroup="Bras"
-          filterMethod={props.showExercisesFromMuscularGroup}
+          filterMethod={props.showExercisesFilteredByMuscularGroup}
         />
         <FilterItem
           muscularGroup="Jambes"
-          filterMethod={props.showExercisesFromMuscularGroup}
+          filterMethod={props.showExercisesFilteredByMuscularGroup}
         />
       </ul>
     </div>

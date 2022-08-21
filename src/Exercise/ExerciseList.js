@@ -17,7 +17,7 @@ class ExerciceList extends Component {
     this.initialExercises = exercises;
   }
 
-  showExercisesFromMuscularGroup = (muscularGroup) => {
+  showExercisesFilteredByMuscularGroup = (muscularGroup) => {
     let filteredExercises = exercises.filter(
       (exercise) => exercise.muscularGroup === muscularGroup
     );
@@ -48,8 +48,8 @@ class ExerciceList extends Component {
             <SearchBar searchValueChange={this.searchValueChange} />
             <FilterDropdown
               displayAllExercises={this.displayAllExercises}
-              showExercisesFromMuscularGroup={
-                this.showExercisesFromMuscularGroup
+              showExercisesFilteredByMuscularGroup={
+                this.showExercisesFilteredByMuscularGroup
               }
             />
           </div>
