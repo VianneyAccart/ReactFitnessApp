@@ -16,12 +16,7 @@ export default function ExerciceList() {
     getExercises();
   }, []);
 
-  useEffect(() => {
-    console.log("searchValue : ", searchValue);
-  }, [searchValue]);
-
   const getExercises = () => {
-    console.log("api call");
     axios
       .get("https://mocki.io/v1/2f2ca3e8-5d39-499d-983e-266957dbbea3")
       .then((response) => response.data)
@@ -50,9 +45,9 @@ export default function ExerciceList() {
 
   return (
     <div className="container">
-      <div className="d-flex justify-content-between my-3">
-        <h1>Liste des exercices</h1>
-        <div className="d-flex">
+      <div className="d-flex justify-content-between align-items-center my-3">
+        <h3>Liste des exercices</h3>
+        <div className="d-flex align-items-center">
           <SearchBar searchValueChange={searchValueChange} />
           <FilterDropdown
             displayAllExercises={displayAllExercises}
@@ -73,7 +68,9 @@ export default function ExerciceList() {
       )}
       <ul className="list-group list-group-flush">
         {exercises
-          .filter((exercise) => exercise.name.includes(searchValue))
+          .filter((exercise) =>
+            exercise.name.toLowerCase().includes(searchValue.toLowerCase())
+          )
           .map((exercise, index) => {
             return <Exercise key={index} exercise={exercise} />;
           })}
