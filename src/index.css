@@ -15,3 +15,12 @@
 .bi:hover {
     color: white;
 }
+
+a {
+    color: black!important;
+}
+
+a:hover {
+    color: rgb(144, 144, 144)!important;
+}
+
