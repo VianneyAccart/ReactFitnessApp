@@ -1,20 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import ActiveFilter from "../Filtering/ActiveFilter";
 import Exercise from "./Exercise";
 import FilterDropdown from "../Filtering/FilterDropdown";
 import "../index.css";
 import axios from "axios";
 import SearchBar from "../Filtering/SearchBar";
+import PageTitleContext from "../Contexts/PageTitleContext";
 
 export default function ExerciceList() {
   const [exercises, setExercises] = React.useState([]);
-  const [initialExercises, setInitialExercises] = React.useState(exercises);
-  const [selectedGroup, setSelectedGroup] = React.useState("");
-  const [searchValue, setSearchValue] = React.useState("");
-
   useEffect(() => {
     getExercises();
   }, []);
+  const [initialExercises, setInitialExercises] = React.useState(exercises);
+  const [selectedGroup, setSelectedGroup] = React.useState("");
+  const [searchValue, setSearchValue] = React.useState("");
+  const { pageTitle, setPageTitle } = useContext(PageTitleContext);
+  useEffect(() => {
+    setPageTitle("Exercices");
+  }, [setPageTitle]);
 
   const getExercises = () => {
     axios
@@ -46,7 +50,7 @@ export default function ExerciceList() {
   return (
     <div className="container">
       <div className="d-flex justify-content-between align-items-center my-3">
-        <h3>Liste des exercices</h3>
+        <h3>{pageTitle}</h3>
         <div className="d-flex align-items-center">
           <SearchBar searchValueChange={searchValueChange} />
           <FilterDropdown

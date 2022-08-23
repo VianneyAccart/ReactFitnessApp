@@ -7,7 +7,7 @@ export default function Navbar() {
         <div>
           <div>
             <Link to="/">
-              <i class="bi bi-house"></i>
+              <i className="bi bi-house"></i>
             </Link>
           </div>
           <button
